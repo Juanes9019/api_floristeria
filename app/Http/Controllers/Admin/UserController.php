@@ -11,7 +11,7 @@ class UserController extends Controller
     {
         $usuarios = User::all();
         $i = 0; 
-        return view('Admin.users.index', compact('usuarios', 'i'));
+        return view('api.users.index', compact('usuarios', 'i'));
     }
 
     /**
@@ -20,7 +20,7 @@ class UserController extends Controller
     public function create()
     {
         $user = new User();
-        return view('Admin.users.create', compact('user'));
+        return view('api.users.create', compact('user'));
     }
 
     /**
@@ -49,7 +49,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('Admin.users')
+        return redirect()->route('api.users')
             ->with('success', 'usuario creado con éxito.');
 
     }
@@ -63,7 +63,7 @@ class UserController extends Controller
 
 
 
-    return view('Admin.users.edit', compact('usuarios'));
+    return view('api.users.edit', compact('usuarios'));
 
 
 }
@@ -101,7 +101,7 @@ if ($request->has('type')) {
 $usuarios->save();
 
 // Redireccionar a la vista de edición con un mensaje de éxito
-return redirect()->route('Admin.users', ['id' => $usuarios->id])
+return redirect()->route('api.users', ['id' => $usuarios->id])
     ->with('success', 'Usuario actualizado exitosamente');
 }
 
@@ -114,7 +114,7 @@ return redirect()->route('Admin.users', ['id' => $usuarios->id])
 
         $user->delete();
 
-        return redirect()->route('Admin.users')
+        return redirect()->route('api.users')
             ->with('success', 'Usuario eliminado con éxito');
 
     }

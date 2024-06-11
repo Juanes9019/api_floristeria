@@ -11,7 +11,7 @@ class PedidoController extends Controller
     {
         $pedidos = Pedido::all();
         $i = 0; 
-        return view('Admin.pedido.index', compact('pedidos', 'i'));
+        return view('api.pedido.index', compact('pedidos', 'i'));
     }
 
     public function cambiar_estado(Request $request, $id)
@@ -35,7 +35,7 @@ class PedidoController extends Controller
     {
         $pedido = Pedido::with('detalles.producto')->findOrFail($id);
         $i = 0; 
-        return view('Admin.pedido.mostrar', compact('pedido','i'));
+        return view('api.pedido.mostrar', compact('pedido','i'));
     }
 }
 

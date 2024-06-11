@@ -10,6 +10,6 @@ class DetalleController extends Controller
     public function index(){
         $detalles = Detalle::all();
         $i = 0; 
-        return view('Admin.detalle.index', compact('detalles', 'i'));
+        return view('api.detalle.index', compact('detalles', 'i'));
     }
 }

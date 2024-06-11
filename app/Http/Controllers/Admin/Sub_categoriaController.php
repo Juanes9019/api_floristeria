@@ -11,7 +11,7 @@ class Sub_categoriaController extends Controller
     {
         $sub_categorias = Sub_categoria::all();
         $i = 0; 
-        return view('Admin.sub_categoria.index', compact('sub_categorias', 'i'));
+        return view('api.sub_categoria.index', compact('sub_categorias', 'i'));
     }
 
     /**
@@ -20,7 +20,7 @@ class Sub_categoriaController extends Controller
     public function create()
     {
         $sub_categorias = new Sub_categoria();
-        return view('Admin.sub_categoria.create', compact('sub_categorias'));
+        return view('api.sub_categoria.create', compact('sub_categorias'));
     }
 
     /**
@@ -39,7 +39,7 @@ class Sub_categoriaController extends Controller
 
         $sub_categorias->save();
 
-        return redirect()->route('Admin.sub_categoria')
+        return redirect()->route('api.sub_categoria')
             ->with('success', 'sub_categoria creada con éxito.');
 
     }
@@ -53,7 +53,7 @@ class Sub_categoriaController extends Controller
 
 
 
-    return view('Admin.sub_categoria.edit', compact('sub_categorias'));
+    return view('api.sub_categoria.edit', compact('sub_categorias'));
 
 
 }
@@ -76,7 +76,7 @@ public function update(Request $request, $id)
     $sub_categorias->save();
 
     // Redireccionar a la vista de edición con un mensaje de éxito
-    return redirect()->route('Admin.sub_categoria', ['id' => $sub_categorias->id])
+    return redirect()->route('api.sub_categoria', ['id' => $sub_categorias->id])
         ->with('success', 'sub_categoria actualizada exitosamente');
 }
 
@@ -89,7 +89,7 @@ public function update(Request $request, $id)
 
         $sub_categorias->delete();
 
-        return redirect()->route('Admin.sub_categoria')
+        return redirect()->route('api.sub_categoria')
             ->with('success', 'sub_categoria eliminada con éxito');
 
     }

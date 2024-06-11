@@ -11,7 +11,7 @@ class ProveedorController extends Controller
     {
         $proveedores = Proveedor::all();
         $i = 0; 
-        return view('Admin.proveedor.index', compact('proveedores', 'i'));
+        return view('api.proveedor.index', compact('proveedores', 'i'));
     }
 
     /**
@@ -20,7 +20,7 @@ class ProveedorController extends Controller
     public function create()
     {
         $proveedores = new Proveedor();
-        return view('Admin.proveedor.create', compact('proveedores'));
+        return view('api.proveedor.create', compact('proveedores'));
     }
 
     /**
@@ -45,7 +45,7 @@ class ProveedorController extends Controller
 
         $proveedor->save();
 
-        return redirect()->route('Admin.proveedor')
+        return redirect()->route('api.proveedor')
             ->with('success', 'proveedor creado con éxito.');
 
     }
@@ -59,7 +59,7 @@ class ProveedorController extends Controller
 
 
 
-    return view('Admin.proveedor.edit', compact('proveedores'));
+    return view('api.proveedor.edit', compact('proveedores'));
 
 
 }
@@ -88,7 +88,7 @@ public function update(Request $request, $id)
     $proveedores->save();
 
     // Redireccionar a la vista de edición con un mensaje de éxito
-    return redirect()->route('Admin.proveedor', ['id' => $proveedores->id])
+    return redirect()->route('api.proveedor', ['id' => $proveedores->id])
         ->with('success', 'proveedor actualizado exitosamente');
 }
 
@@ -101,7 +101,7 @@ public function update(Request $request, $id)
 
         $proveedor->delete();
 
-        return redirect()->route('Admin.proveedor')
+        return redirect()->route('api.proveedor')
             ->with('success', 'proveedor eliminado con éxito');
 
     }

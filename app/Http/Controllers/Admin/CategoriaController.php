@@ -14,7 +14,7 @@ class CategoriaController extends Controller
     {
         $categorias = Categoria::all();
         $i = 0; 
-        return view('Admin.categoria.index', compact('categorias', 'i'));
+        return view('api.categoria.index', compact('categorias', 'i'));
     }
 
     /**
@@ -22,7 +22,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        return view('Admin.categoria.create');
+        return view('api.categoria.create');
     }
 
     /**
@@ -47,7 +47,7 @@ class CategoriaController extends Controller
             if ($result) {
                 // Log para verificar que intentó redirigir
                 Log::info('Intentando redireccionar');
-                return redirect()->route('Admin.categoria');
+                return redirect()->route('api.categoria');
             } else {
                 dd('Error al insertar en la base de datos');
             }
@@ -67,7 +67,7 @@ class CategoriaController extends Controller
     {
         $categoria = Categoria::findOrFail($id);
 
-        return view('Admin.categoria.edit',['categoria' => $categoria]);
+        return view('api.categoria.edit',['categoria' => $categoria]);
     }
 
     /**
@@ -88,7 +88,7 @@ class CategoriaController extends Controller
     $categoria->save();
 
     // Redirecciona a la vista de edición con un mensaje de éxito
-    return redirect()->route('Admin.categoria', ['id' => $categoria->id])
+    return redirect()->route('api.categoria', ['id' => $categoria->id])
         ->with('success', 'categoria actualizado exitosamente');
 }
 
@@ -101,10 +101,10 @@ class CategoriaController extends Controller
     
         if ($categoria) {
             $categoria->delete();
-            return redirect()->route("Admin.categoria")->with('success', 'categoria eliminada exitosamente');
+            return redirect()->route("api.categoria")->with('success', 'categoria eliminada exitosamente');
         } else {
             // Puedes manejar el caso donde el producto no se encuentra
-            return redirect()->route("Admin.categoria")->with('error', 'No se pudo encontrar la categoria');
+            return redirect()->route("api.categoria")->with('error', 'No se pudo encontrar la categoria');
         }
     }
 }
